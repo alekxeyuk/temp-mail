@@ -97,7 +97,7 @@ class TempMail(object):
         req = requests.get(url)
         try:
             return req.json()
-        except ValueError, e:
+        except ValueError as e:
             return {'error', str(e)}
         
     def delete_mail(self, mail_id=None):
