@@ -1,5 +1,6 @@
 import string
 import random
+import time
 from hashlib import md5
 
 import requests
@@ -111,3 +112,14 @@ class TempMail(object):
             return True
         else:
             return False
+        
+    def clear_mailbox(self, email=None, email_hash=None):
+        """
+        Delete all letters in mailbox.
+        """
+        reqs = []
+        url = 'http://{0}/request/delete/id/'.format(self.api_domain)
+        for letter in self.get_mailbox(email=email, email_hash=email_hash):
+            reqs.append(requests.get(url + letter['mail_id'] + '/'))
+            time.sleep(1)
+        return reqs
