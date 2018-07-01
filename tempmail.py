@@ -30,7 +30,7 @@ class TempMail(object):
         Return list of available domains for use in email address.
         """
         if not hasattr(self, '_available_domains'):
-            url = 'http://{0}/request/domains/format/json/'.format(
+            url = 'https://{0}/request/domains/format/json/'.format(
                 self.api_domain)
             req = requests.get(url)
             domains = req.json()
@@ -91,7 +91,7 @@ class TempMail(object):
         if email_hash is None:
             email_hash = self.get_hash(email)
 
-        url = 'http://{0}/request/mail/id/{1}/format/json/'.format(
+        url = 'https://{0}/request/mail/id/{1}/format/json/'.format(
             self.api_domain, email_hash)
         req = requests.get(url)
         try:
