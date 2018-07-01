@@ -98,3 +98,16 @@ class TempMail(object):
             return req.json()
         except ValueError, e:
             return {'error', str(e)}
+        
+    def delete_mail(self, mail_id=None):
+        """
+        Delete mail by id
+        :param mail_id: mail hash id
+        """
+        if not mail_id is None:
+            url = 'http://{0}/request/delete/id/{1}/'.format(
+                self.api_domain, mail_id)
+            req = requests.get(url)
+            return True
+        else:
+            return False
