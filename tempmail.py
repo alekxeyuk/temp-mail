@@ -106,7 +106,7 @@ class TempMail(object):
         :param mail_id: mail hash id
         """
         if not mail_id is None:
-            url = 'http://{0}/request/delete/id/{1}/'.format(
+            url = 'https://{0}/request/delete/id/{1}/'.format(
                 self.api_domain, mail_id)
             req = requests.get(url)
             return True
@@ -118,7 +118,7 @@ class TempMail(object):
         Delete all letters in mailbox.
         """
         reqs = []
-        url = 'http://{0}/request/delete/id/'.format(self.api_domain)
+        url = 'https://{0}/request/delete/id/'.format(self.api_domain)
         for letter in self.get_mailbox(email=email, email_hash=email_hash):
             reqs.append(requests.get(url + letter['mail_id'] + '/'))
             time.sleep(1)
