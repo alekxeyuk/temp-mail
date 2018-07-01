@@ -16,7 +16,7 @@ class TempMail(object):
     Default value is ``api.temp-mail.ru``.
     """
 
-    def __init__(self, login=None, domain=None, api_domain='api.temp-mail.ru'):
+    def __init__(self, login=None, domain=None, api_domain='temp-mail.org'):
         self.login = login
         self.domain = domain
         self.api_domain = api_domain
@@ -76,7 +76,7 @@ class TempMail(object):
 
         :param email: email address for generate md5 hash.
         """
-        return md5(email).hexdigest()
+        return md5(email.encode('utf-8')).hexdigest()
 
     def get_mailbox(self, email=None, email_hash=None):
         """
